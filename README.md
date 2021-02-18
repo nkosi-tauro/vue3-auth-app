@@ -22,13 +22,16 @@
 
 ## 🎯 About ##
 
-Describe your project
+Idea : [Dev Challenge Auth App](https://devchallenges.io/challenges/N1fvBjQfhlkctmwj1tnw)
 
-<!-- ## ✨ Features ##
+## ✨ Features ##
 
-✔ Feature 1: 
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3; -->
+User(s) can login and or register a new account ✔   
+: can log in or register with at least one of the following services: Google, Github ✔   
+: can see my profile details ❌   
+: can edit my details including: photo, name, bio, phone, email and password ❌   
+: can upload a new photo or provide an image URL ❌   
+
 
 ## 🚀 Technologies ##
 
