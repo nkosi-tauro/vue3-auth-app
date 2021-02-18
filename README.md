@@ -1,6 +1,9 @@
 <h1 align="center">Vue3 Auth App</h1>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/32ebd27a-5003-427d-b4fe-241479219b4e/deploy-status)](https://app.netlify.com/sites/vue3authapp/deploys)
+  
 <p align="center">
+  
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/nkosi-tauro/vue3-auth-app?color=56BEB8">
 
   <img alt="Github language count" src="https://img.shields.io/github/languages/count/nkosi-tauro/vue3-auth-app?color=56BEB8">
