@@ -62,12 +62,16 @@
             </div>
           </div>
           <div class="py-5">
-            <div class="grid  gap-1">
-              <div class="text-center  whitespace-nowrap">
-                  <a>
-                    <span class="inline-block text-sm">Already a member? <router-link to="/login" class="text-blue-900"
-                    >Login</router-link></span>
-                  </a>
+            <div class="grid gap-1">
+              <div class="text-center whitespace-nowrap">
+                <a>
+                  <span class="inline-block text-sm"
+                    >Already a member?
+                    <router-link to="/login" class="text-blue-900"
+                      >Login</router-link
+                    ></span
+                  >
+                </a>
               </div>
             </div>
           </div>
@@ -78,8 +82,27 @@
 </template>
 
 <script>
+import DarkMode from "../components/DarkMode.vue";
+import firebase from 'firebase';
+import { reactive, toRefs } from "vue";
 export default {
   name: "Register",
+  setup() {
+    const state = reactive({
+      email: null,
+      password: null,
+    });
+
+    function Register() {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(state.email, state.password)
+        .then((user) => console.log(user))
+        .catch((err) => alert(err.message));
+    }
+
+    return { ...toRefs(state), Register };
+  },
 };
 </script>
 
