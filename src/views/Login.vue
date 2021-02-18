@@ -87,8 +87,26 @@
 
 
 <script>
+import {reactive, toRefs} from 'vue'
+import firebase from 'firebase'
 export default {
   name: "Login",
+  setup(){
+      const state = reactive({
+        email : null,
+        password : null
+      })
+
+      function Login(){
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(state.email, state.password)
+            .then(data => console.log(data))
+            .catch(err => alert(err.message))
+      }
+
+      return {...toRefs(state), Login}
+  }
 };
 </script>
 
