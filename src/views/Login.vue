@@ -62,20 +62,12 @@
             </div>
           </div>
           <div class="py-5">
-            <div class="grid grid-cols-2 gap-1">
-              <div class="text-center sm:text-left whitespace-nowrap">
-                <button
-                  class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset"
-                >
-                  <span class="inline-block ml-1">Forgot Password</span>
-                </button>
-              </div>
-              <div class="text-center sm:text-right whitespace-nowrap">
-                <router-link to="/register">
-                    <button class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
-                        <span class="inline-block ml-1">Create Account</span>
-                    </button>
-                </router-link>
+            <div class="grid  gap-1">
+              <div class="text-center  whitespace-nowrap">
+                  <a>
+                    <span class="inline-block text-sm">Don't have an account? <router-link to="/register" class="text-blue-900"
+                    >Register</router-link></span>
+                  </a>
               </div>
             </div>
           </div>
