@@ -49,12 +49,7 @@
           <div class="p-5">
             <div class="grid grid-cols-2 gap-1">
               <Google/>
-              <button
-                type="button"
-                class="transition duration-200 border border-gray-200 text-gray-500 w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block"
-              >
-                Github
-              </button>
+              <GitHub/>
             </div>
           </div>
           <div class="py-5">
@@ -77,13 +72,15 @@
 <script>
 import DarkMode from '../components/DarkMode.vue'
 import Google from '../components/LoginProviders/Google.vue'
+import GitHub from '../components/LoginProviders/GitHub.vue'
 import {reactive, toRefs} from 'vue'
 import firebase from 'firebase'
 export default {
   name: "Login",
   components : {
       DarkMode,
-      Google
+      Google,
+      GitHub
   },
   setup(){
       const state = reactive({
