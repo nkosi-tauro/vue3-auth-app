@@ -1,7 +1,8 @@
 <template>
   <div class="login">
     <!-- component -->
-    <div class="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
+    <div class="min-h-screen bg-gray-100 dark:bg-black flex flex-col justify-center sm:py-12">
+    <DarkMode/>
       <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
         <h1 class="font-bold text-center text-2xl mb-5">Authentication App</h1>
         <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
@@ -79,10 +80,14 @@
 
 
 <script>
+import DarkMode from '../components/DarkMode.vue'
 import {reactive, toRefs} from 'vue'
 import firebase from 'firebase'
 export default {
   name: "Login",
+  components : {
+      DarkMode
+  },
   setup(){
       const state = reactive({
         email : null,
