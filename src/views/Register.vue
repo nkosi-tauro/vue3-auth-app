@@ -20,7 +20,7 @@
               >
               <input
                 v-model.trim="password"
-                type="text"
+                type="password"
                 class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
               />
               <button
