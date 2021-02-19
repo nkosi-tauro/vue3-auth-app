@@ -120,12 +120,17 @@
           </div>
         </div>
         <div class="border-t mt-6 pt-3">
-          <button
-            type="submit"
-            class="rounded text-gray-100 px-3 py-1 bg-blue-500 hover:shadow-inner hover:bg-blue-700 transition-all duration-300"
-          >
-            Update
-          </button>
+          <div class="w-28">
+            <button
+              type="submit"
+              class="rounded text-gray-100 px-3 py-1 bg-blue-500 hover:shadow-inner hover:bg-blue-700 transition-all duration-300"
+            >
+              Update
+            </button>
+            <div v-if="isLoading" class="flex mt-1 text-center float-right">
+              <Loading />
+            </div>
+          </div>
         </div>
       </form>
     </div>
@@ -138,17 +143,18 @@ import Header from "../components/Header.vue";
 import { useRoute, useRouter } from "vue-router";
 import { getUser, updateUser } from "../main.js";
 import { reactive, computed, onMounted, toRefs } from "vue";
+import Loading from "../components/Loading.vue";
 
 export default {
   name: "About",
   components: {
     Header,
+    Loading,
   },
   setup() {
     const router = useRouter();
     // get id from url
-    const route = useRoute()
-    
+    const route = useRoute();
 
     const state = reactive({
       fname: null,
@@ -156,28 +162,30 @@ export default {
       Uname: null,
       phone: null,
       bio: null,
-      userId : computed(() => route.params.id)
+      isLoading: false,
+      userId: computed(() => route.params.id),
     });
 
-    onMounted(async() =>  {
-      const user = await getUser(state.userId)
-      state.fname = user.fname 
-      state.lname = user.lname 
-      state.Uname = user.Uname 
-      state.phone = user.phone 
-      state.bio = user.bio
+    onMounted(async () => {
+      const user = await getUser(state.userId);
+      state.fname = user.fname;
+      state.lname = user.lname;
+      state.Uname = user.Uname;
+      state.phone = user.phone;
+      state.bio = user.bio;
     });
 
     const updateInfo = async () => {
-      await updateUser(state.userId, {...state})
+      await updateUser(state.userId, { ...state }, (state.isLoading = true));
       // redirect to home page
-      router.push('/')
+      router.push("/");
       // clear fields once method is done
-      state.fname = '' 
-      state.lname = '' 
-      state.Uname = '' 
-      state.phone = '' 
-      state.bio = ''
+      state.isLoading = false;
+      state.fname = "";
+      state.lname = "";
+      state.Uname = "";
+      state.phone = "";
+      state.bio = "";
     };
 
     return { ...toRefs(state), updateInfo };

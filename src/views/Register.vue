@@ -64,12 +64,17 @@
               </div>
 
               <div class="mb-6 text-center">
-                <button
-                  class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-                  type="submit"
-                >
-                  Register Account
-                </button>
+                <div class="grid grid-cols-3 gap-1">
+                  <button
+                    class="w-full col-span-2 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                    type="submit"
+                  >
+                    Register Account
+                  </button>
+                  <div v-if="isLoading">
+                    <Loading class="m-3 font-extrabold text-center" />
+                  </div>
+                </div>
               </div>
               <hr class="mb-6 border-t" />
               <div class="text-center">
@@ -92,20 +97,23 @@
 <script>
 import Google from "../components/LoginProviders/Google.vue";
 import GitHub from "../components/LoginProviders/GitHub.vue";
+import Loading from "../components/Loading.vue";
 import DarkMode from "../components/DarkMode.vue";
 import firebase from "firebase";
 import { reactive, toRefs } from "vue";
 export default {
   name: "Register",
-  components: { Google, GitHub },
+  components: { Google, GitHub, Loading },
   setup() {
     const state = reactive({
       email: null,
       password: null,
+      isLoading : false
 
     });
 
     function Register() {
+      state.isLoading = true
       firebase
         .auth()
         .createUserWithEmailAndPassword(state.email, state.password)
@@ -116,7 +124,7 @@ export default {
 
   
     
-    return { ...toRefs(state), Register };
+    return { ...toRefs(state),  Register };
   }
 };
 </script>

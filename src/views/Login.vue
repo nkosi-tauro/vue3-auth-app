@@ -1,8 +1,8 @@
 <template>
-  <div class="login ">
+  <div class="login">
     <!-- Container -->
     <div class="container mx-auto">
-      <div class="flex justify-center px-6 my-5 ">
+      <div class="flex justify-center px-6 my-5">
         <!-- Row -->
         <div class="w-full xl:w-3/4 lg:w-11/12 flex shadow-lg">
           <!-- Col -->
@@ -63,12 +63,17 @@
               </div>
 
               <div class="mb-6 text-center">
-                <button
-                  class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-                  type="submit"
-                >
-                  Sign In
-                </button>
+                <div class="grid grid-cols-3 gap-1">
+                  <button
+                    class="w-full col-span-2 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                    type="submit"
+                  >
+                    Sign In
+                  </button>
+                  <div v-if="isLoading">
+                    <Loading class="m-3 font-extrabold text-center" />
+                  </div>
+                </div>
               </div>
               <hr class="mb-6 border-t" />
               <div class="text-center">
@@ -91,6 +96,7 @@
 
 <script>
 import DarkMode from "../components/DarkMode.vue";
+import Loading from "../components/Loading.vue";
 import Google from "../components/LoginProviders/Google.vue";
 import GitHub from "../components/LoginProviders/GitHub.vue";
 import { reactive, toRefs } from "vue";
@@ -101,18 +107,23 @@ export default {
     DarkMode,
     Google,
     GitHub,
+    Loading,
   },
   setup() {
     const state = reactive({
       email: null,
       password: null,
+      isLoading: false,
     });
 
     function Login() {
+      state.isLoading = true;
       firebase
         .auth()
         .signInWithEmailAndPassword(state.email, state.password)
-        .then((data) => console.log("Success"))
+        .then((data) => {
+          console.log("Success");
+        })
         .catch((err) => alert(err.message));
     }
 
