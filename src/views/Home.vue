@@ -2,172 +2,130 @@
   <div class="home">
     <Header />
     <!-- component -->
-    <section class="py-10 bg-gray-100 bg-opacity-50 h-screen">
-      <div class="mx-auto container max-w-2xl md:w-3/4 shadow-md">
+    <div class="bg-white m-10 shadow rounded-lg p-6">
+      <h2 class="text-xl mb-4 font-semibold">Add Account Infomation</h2>
+      <form>
+      <div class="grid lg:grid-cols-2 gap-6">
+        
         <div
-          class="bg-gray-100 p-4 border-t-2 bg-opacity-5 border-indigo-400 rounded-t"
+          class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1"
         >
-          <div class=" mx-auto md:w-full md:mx-0">
-            <div class="inline-flex items-center space-x-4">
-              <img
-                class="w-10 h-10 object-cover rounded-full"
-                alt="User avatar"
-                :src="image"
-              />
-
-              <h1 class="text-gray-600">{{ name }}</h1>
-            </div>
-            <div class="float-right ">
-              <router-link to="/about"><button
-                class="text-white w-full mx-auto max-w-sm rounded-md text-center bg-indigo-400 py-2 px-4 inline-flex items-center focus:outline-none md:float-right"
+          <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+            <p>
+              <label for="name" class="bg-white text-gray-600 px-1"
+                >First name *</label
               >
-                Edit
-              </button></router-link>
-            </div>
+            </p>
           </div>
+          <p>
+            <input
+              id="name"
+              autocomplete="false"
+              tabindex="0"
+              type="text"
+              class="py-1 px-1 text-gray-900 outline-none block h-full w-full"
+            />
+          </p>
         </div>
-        <div class="bg-white space-y-6">
-          <div
-            class="md:inline-flex space-y-4 md:space-y-0 w-full p-4 text-gray-500 items-center"
-          >
-            <h2 class="md:w-1/3 max-w-sm mx-auto">Account</h2>
-            <div class="md:w-2/3 max-w-sm mx-auto">
-              <label class="text-sm text-gray-400">Email</label>
-              <div class="w-full inline-flex border">
-                <div class="pt-2 w-1/12 bg-gray-100 bg-opacity-50">
-                  <svg
-                    fill="none"
-                    class="w-6 text-gray-400 mx-auto"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <input
-                  type="email"
-                  class="w-11/12 focus:outline-none focus:text-gray-600 p-2"
-                  placeholder="email@example.com"
-                  disabled
-                />
-              </div>
-            </div>
+        <div
+          class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1"
+        >
+          <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+            <p>
+              <label for="lastname" class="bg-white text-gray-600 px-1"
+                >Last name *</label
+              >
+            </p>
           </div>
-
-          <hr />
-          <div
-            class="md:inline-flex space-y-4 md:space-y-0 w-full p-4 text-gray-500 items-center"
-          >
-            <h2 class="md:w-1/3 mx-auto max-w-sm">Personal info</h2>
-            <div class="md:w-2/3 mx-auto max-w-sm space-y-5">
-              <div>
-                <label class="text-sm text-gray-400">Full name</label>
-                <div class="w-full inline-flex border">
-                  <div class="w-1/12 pt-2 bg-gray-100">
-                    <svg
-                      fill="none"
-                      class="w-6 text-gray-400 mx-auto"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                      />
-                    </svg>
-                  </div>
-                  <input
-                    type="text"
-                    class="w-11/12 focus:outline-none focus:text-gray-600 p-2"
-                    placeholder="Charly Olivas"
-                    disabled
-                  />
-                </div>
-              </div>
-              <div>
-                <label class="text-sm text-gray-400">Phone number</label>
-                <div class="w-full inline-flex border">
-                  <div class="pt-2 w-1/12 bg-gray-100">
-                    <svg
-                      fill="none"
-                      class="w-6 text-gray-400 mx-auto"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
-                  <input
-                    type="number"
-                    class="w-11/12 focus:outline-none focus:text-gray-600 p-2"
-                    placeholder="12341234"
-                    disabled
-                  />
-                </div>
-              </div>
-            </div>
+          <p>
+            <input
+              id="lastname"
+              autocomplete="false"
+              tabindex="0"
+              type="text"
+              class="py-1 px-1 outline-none block h-full w-full"
+            />
+          </p>
+        </div>
+        <div
+          class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1"
+        >
+          <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+            <p>
+              <label for="username" class="bg-white text-gray-600 px-1"
+                >Username *</label
+              >
+            </p>
           </div>
-
-          <hr />
-          <div
-            class="md:inline-flex w-full space-y-4 md:space-y-0 p-8 text-gray-500 items-center"
-          >
-            <h2 class="md:w-4/12 max-w-sm mx-auto">Change password</h2>
-
-            <div
-              class=" w-full  max-w-sm mx-auto space-y-5 md:inline-flex pl-2"
-            >
-              <div class="w-full inline-flex border-b">
-                <div class="w-1/12 pt-2 bg-gray-100">
-                  <svg
-                    fill="none"
-                    class="w-6 text-gray-400 mx-auto"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                    />
-                  </svg>
-                </div>
-                <input
-                  type="password"
-                  class="w-11/12 focus:outline-none focus:text-gray-600 p-2 "
-                  placeholder="Old Password"
-                  disabled
-                />
-              </div>
-            </div>
+          <p>
+            <input
+              id="username"
+              autocomplete="false"
+              tabindex="0"
+              type="text"
+              class="py-1 px-1 outline-none block h-full w-full"
+            />
+          </p>
+        </div>
+        <div
+          class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1"
+        >
+          <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+            <p>
+              <label for="Phone" class="bg-white text-gray-600 px-1"
+                >Phone *</label
+              >
+            </p>
           </div>
-
-          <hr />
-          <div class="w-full p-4 text-right text-gray-500">
-          </div>
+          <p>
+            <input
+              id="phone"
+              autocomplete="false"
+              tabindex="0"
+              type="phone"
+              class="py-1 px-1 outline-none block h-full w-full"
+            />
+          </p>
         </div>
       </div>
-    </section>
+      <div class="textarea mt-4">
+                <div
+          class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1"
+        >
+          <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+            <p>
+              <label for="Bio" class="bg-white text-gray-600 px-1"
+                >Bio *</label
+              >
+            </p>
+          </div>
+          <p>
+            <textarea
+              id="text"
+              autocomplete="false"
+              tabindex="0"
+              type="text"
+              class="py-1 px-1 outline-none block h-full w-full"
+            />
+          </p>
+        </div>
+      </div>
+      <div class="border-t mt-6 pt-3">
+        <button
+          class="rounded text-gray-100 px-3 py-1 bg-blue-500 hover:shadow-inner hover:bg-blue-700 transition-all duration-300"
+        >
+          Save
+        </button>
+      </div>
+      </form>
+    </div>
   </div>
 </template>
 
 <script>
 import Header from "../components/Header.vue";
 import { onBeforeMount, reactive, toRefs } from "vue";
-import firebaseUser from '../store/user.js' 
+import firebaseUser from "../store/user.js";
 
 export default {
   name: "Home",
@@ -175,9 +133,9 @@ export default {
     Header,
   },
   setup() {
-    const { name, image } = firebaseUser()
-    return {name, image}
-  }
+    const { name, image } = firebaseUser();
+    return { name, image };
+  },
 };
 </script>
 
