@@ -62,25 +62,20 @@
 import { onBeforeMount, reactive, toRefs } from "vue";
 import firebase from "firebase";
 import { useRoute, useRouter } from "vue-router";
+import firebaseUser from '../store/user.js'
 
 export default {
   name: "Header",
   setup(props) {
+    const { name, fetchUser, image } = firebaseUser()
     const route = useRoute();
     const router = useRouter();
     const state = reactive({
-      name: "",
       currentRoute: true,
-      image : ""
     });
 
     onBeforeMount(() => {
-      const user = firebase.auth().currentUser;
-      if (user) {
-        console.log(user)
-        state.name = user.displayName || user.email.split("@")[0];
-        state.image = user.photoURL || `https://eu.ui-avatars.com/api/?name=${state.name[0]}&size=1000`
-      }
+      fetchUser()
     });
     // Dynamic route
     if (route.path !== "/about") {
@@ -91,7 +86,7 @@ export default {
       firebase.auth().signOut();
     }
 
-    return { ...toRefs(state), Logout };
+    return { ...toRefs(state), name, image, Logout };
   },
 };
 </script>
