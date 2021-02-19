@@ -12,7 +12,8 @@
               >
               <input
                 v-model.trim="email"
-                type="text"
+                required
+                type="email"
                 class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
               />
               <label class="font-semibold text-sm text-gray-600 pb-1 block"
@@ -20,6 +21,7 @@
               >
               <input
                 v-model.trim="password"
+                required
                 type="password"
                 class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
               />
@@ -90,7 +92,7 @@ export default {
       firebase
         .auth()
         .createUserWithEmailAndPassword(state.email, state.password)
-        .then((user) => console.log(user))
+        .then((user) => console.log(state.fname))
         .catch((err) => alert(err.message));
     }
 
