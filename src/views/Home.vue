@@ -4,7 +4,7 @@
     <!-- component -->
     <div class="bg-white m-10 shadow rounded-lg p-6">
       <h2 class="text-xl mb-4 font-semibold">Add Account Infomation</h2>
-      <form>
+      <form @submit.prevent="addInfo">
       <div class="grid lg:grid-cols-2 gap-6">
         
         <div
@@ -19,9 +19,11 @@
           </div>
           <p>
             <input
+              v-model.trim="fname"
               id="name"
               autocomplete="false"
               tabindex="0"
+              required
               type="text"
               class="py-1 px-1 text-gray-900 outline-none block h-full w-full"
             />
@@ -39,7 +41,9 @@
           </div>
           <p>
             <input
+              v-model.trim="lname"
               id="lastname"
+              required
               autocomplete="false"
               tabindex="0"
               type="text"
@@ -59,9 +63,11 @@
           </div>
           <p>
             <input
+              v-model.trim="Uname"
               id="username"
               autocomplete="false"
               tabindex="0"
+              required
               type="text"
               class="py-1 px-1 outline-none block h-full w-full"
             />
@@ -79,7 +85,9 @@
           </div>
           <p>
             <input
+              v-model.number="phone"
               id="phone"
+              required
               autocomplete="false"
               tabindex="0"
               type="phone"
@@ -101,7 +109,9 @@
           </div>
           <p>
             <textarea
+              v-model="bio"
               id="text"
+              required
               autocomplete="false"
               tabindex="0"
               type="text"
@@ -112,6 +122,7 @@
       </div>
       <div class="border-t mt-6 pt-3">
         <button
+        type="submit"
           class="rounded text-gray-100 px-3 py-1 bg-blue-500 hover:shadow-inner hover:bg-blue-700 transition-all duration-300"
         >
           Save
@@ -126,6 +137,7 @@
 import Header from "../components/Header.vue";
 import { onBeforeMount, reactive, toRefs } from "vue";
 import firebaseUser from "../store/user.js";
+import {createUser} from '../main.js'
 
 export default {
   name: "Home",
@@ -133,8 +145,25 @@ export default {
     Header,
   },
   setup() {
+    const state = reactive({
+      fname : null,
+      lname : null,
+      Uname : null,
+      phone : null,
+      bio : null
+    })
+
+    const addInfo = async () => {
+      await createUser ({...state})
+      // clear fields once method is done
+      state.fname = '' 
+      state.lname = '' 
+      state.Uname = '' 
+      state.phone = '' 
+      state.bio = '' 
+    }
     const { name, image } = firebaseUser();
-    return { name, image };
+    return { name, image, ...toRefs(state), addInfo };
   },
 };
 </script>
