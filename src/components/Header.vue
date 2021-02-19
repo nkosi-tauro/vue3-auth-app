@@ -25,17 +25,18 @@
                 to="/about"
                 class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
               >
-              <div class="float ">
-                <button
-                  class="block h-10 w-10 rounded-full overflow-hidden focus:outline-none"
-                >
+                <div class="relative inline-block">
                   <img
-                    class="h-full w-full object-cover"
-                    :src=image
-                    alt="avatar"
+                    class="inline-block object-cover w-9 h-9 rounded-full"
+                    :src="image"
+                    alt=""
                   />
-                </button>
-                <!-- https://eu.ui-avatars.com/api/?name=John&size=1000 -->
+                  <span v-if="image"
+                    class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-green-600 border-2 border-white rounded-full"
+                  ></span>
+                  <span v-else
+                    class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-red-600 border-2 border-white rounded-full"
+                  ></span>
                 </div>
               </router-link>
               <router-link
@@ -62,12 +63,12 @@
 import { onBeforeMount, reactive, toRefs } from "vue";
 import firebase from "firebase";
 import { useRoute, useRouter } from "vue-router";
-import firebaseUser from '../store/user.js'
+import firebaseUser from "../store/user.js";
 
 export default {
   name: "Header",
   setup(props) {
-    const { name, fetchUser, image } = firebaseUser()
+    const { name, fetchUser, image } = firebaseUser();
     const route = useRoute();
     const router = useRouter();
     const state = reactive({
@@ -75,7 +76,7 @@ export default {
     });
 
     onBeforeMount(() => {
-      fetchUser()
+      fetchUser();
     });
     // Dynamic route
     if (route.path !== "/about") {
