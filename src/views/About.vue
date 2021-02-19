@@ -12,10 +12,10 @@
               <img
                 class="w-10 h-10 object-cover rounded-full"
                 alt="User avatar"
-                src="https://avatars3.githubusercontent.com/u/72724639?s=400&u=964a4803693899ad66a9229db55953a3dbaad5c6&v=4"
+                :src="image"
               />
 
-              <h1 class="text-gray-600">Charly Olivas {{name}}</h1>
+              <h1 class="text-gray-600">{{name}}</h1>
             </div>
           </div>
         </div>
@@ -162,13 +162,16 @@
 
 <script>
 import Header from "../components/Header.vue";
+import firebaseUser from '../store/user.js'
+
 export default {
   name: "About",
   components: {
     Header,
   },
-  props:{
-    name : String
+  setup(){
+    const { name, image } = firebaseUser()
+    return {name, image}
   }
 };
 </script>

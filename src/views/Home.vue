@@ -12,10 +12,10 @@
               <img
                 class="w-10 h-10 object-cover rounded-full"
                 alt="User avatar"
-                src="https://avatars3.githubusercontent.com/u/72724639?s=400&u=964a4803693899ad66a9229db55953a3dbaad5c6&v=4"
+                :src="image"
               />
 
-              <h1 class="text-gray-600">Charly Olivas {{ name }}</h1>
+              <h1 class="text-gray-600">{{ name }}</h1>
             </div>
             <div class="float-right ">
               <router-link to="/about"><button
@@ -167,13 +167,17 @@
 <script>
 import Header from "../components/Header.vue";
 import { onBeforeMount, reactive, toRefs } from "vue";
-import firebase from "firebase";
+import firebaseUser from '../store/user.js' 
 
 export default {
   name: "Home",
   components: {
     Header,
   },
+  setup() {
+    const { name, image } = firebaseUser()
+    return {name, image}
+  }
 };
 </script>
 
