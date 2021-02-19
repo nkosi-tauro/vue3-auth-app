@@ -1,66 +1,86 @@
 <template>
-  <div class="login">
-    <!-- component -->
-    <div class="min-h-screen bg-gray-100 dark:bg-black flex flex-col justify-center sm:py-12">
-    <DarkMode/>
-      <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
-        <h1 class="font-bold text-center text-2xl mb-5">Authentication App</h1>
-        <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
-          <div class="px-5 py-7">
-            <form @submit.prevent="Login">
-              <label class="font-semibold text-sm text-gray-600 pb-1 block"
-                >E-mail</label
-              >
-              <input
-                v-model.trim="email"
-                type="text"
-                class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
-              />
-              <label class="font-semibold text-sm text-gray-600 pb-1 block"
-                >Password</label
-              >
-              <input
-                v-model.trim="password"
-                type="password"
-                class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
-              />
-              <button
-                type="submit"
-                class="transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
-              >
-                <span class="inline-block mr-2">Login</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  class="w-4 h-4 inline-block"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </button>
-            </form>
-          </div>
-          <div class="p-5">
-            <div class="grid grid-cols-2 gap-1">
-              <Google/>
-              <GitHub/>
-            </div>
-          </div>
-          <div class="py-5">
-            <div class="grid  gap-1">
-              <div class="text-center  whitespace-nowrap">
-                  <a>
-                    <span class="inline-block text-sm">Don't have an account? <router-link to="/register" class="text-blue-900"
-                    >Register</router-link></span>
-                  </a>
+  <div class="login ">
+    <!-- Container -->
+    <div class="container mx-auto">
+      <div class="flex justify-center px-6 my-5 ">
+        <!-- Row -->
+        <div class="w-full xl:w-3/4 lg:w-11/12 flex shadow-lg">
+          <!-- Col -->
+          <div
+            class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
+            style="
+              background-image: url('https://source.unsplash.com/HOkjo9_NcN4/600x800');
+            "
+          ></div>
+          <!-- Col -->
+          <div
+            class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none"
+          >
+            <h3 class="pt-4 text-2xl text-center">Welcome Back!</h3>
+            <div class="p-5">
+              <h3 class="text-center mb-2 font-semibold">Sign in with</h3>
+              <div class="grid grid-cols-2 gap-1">
+                <Google />
+                <GitHub />
               </div>
             </div>
+            <h3 class="text-center font-semibold">Or</h3>
+            <form
+              @submit.prevent="Login"
+              class="px-8 pt-6 pb-8 mb-4 bg-white rounded"
+            >
+              <div class="mb-4">
+                <label
+                  class="block mb-2 text-sm font-bold text-gray-700"
+                  for="username"
+                >
+                  Email
+                </label>
+                <input
+                  class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                  id="username"
+                  type="text"
+                  required
+                  v-model.trim="email"
+                  placeholder="Username"
+                />
+              </div>
+              <div class="mb-4">
+                <label
+                  class="block mb-2 text-sm font-bold text-gray-700"
+                  for="password"
+                >
+                  Password
+                </label>
+                <input
+                  class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                  id="password"
+                  type="password"
+                  required
+                  v-model.trim="password"
+                  placeholder="******************"
+                />
+              </div>
+
+              <div class="mb-6 text-center">
+                <button
+                  class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                  type="submit"
+                >
+                  Sign In
+                </button>
+              </div>
+              <hr class="mb-6 border-t" />
+              <div class="text-center">
+                <router-link to="/register"
+                  ><a
+                    class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+                  >
+                    Create an Account!
+                  </a></router-link
+                >
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -70,34 +90,34 @@
 
 
 <script>
-import DarkMode from '../components/DarkMode.vue'
-import Google from '../components/LoginProviders/Google.vue'
-import GitHub from '../components/LoginProviders/GitHub.vue'
-import {reactive, toRefs} from 'vue'
-import firebase from 'firebase'
+import DarkMode from "../components/DarkMode.vue";
+import Google from "../components/LoginProviders/Google.vue";
+import GitHub from "../components/LoginProviders/GitHub.vue";
+import { reactive, toRefs } from "vue";
+import firebase from "firebase";
 export default {
   name: "Login",
-  components : {
-      DarkMode,
-      Google,
-      GitHub
+  components: {
+    DarkMode,
+    Google,
+    GitHub,
   },
-  setup(){
-      const state = reactive({
-        email : null,
-        password : null
-      })
+  setup() {
+    const state = reactive({
+      email: null,
+      password: null,
+    });
 
-      function Login(){
-        firebase
-            .auth()
-            .signInWithEmailAndPassword(state.email, state.password)
-            .then(data => console.log(data))
-            .catch(err => alert(err.message))
-      }
+    function Login() {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(state.email, state.password)
+        .then((data) => console.log(data))
+        .catch((err) => alert(err.message));
+    }
 
-      return {...toRefs(state), Login}
-  }
+    return { ...toRefs(state), Login };
+  },
 };
 </script>
 
