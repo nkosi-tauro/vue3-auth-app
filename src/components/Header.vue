@@ -20,31 +20,22 @@
             <nav
               class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row"
             >
-              <router-link
-                v-if="!currentRoute"
-                to="/about"
-                class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-              >
-                <div class="relative inline-block">
-                  <img
-                    class="inline-block object-cover w-9 h-9 rounded-full"
-                    :src="image"
-                    alt=""
-                  />
-                  <span v-if="image"
-                    class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-green-600 border-2 border-white rounded-full"
-                  ></span>
-                  <span v-else
-                    class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-red-600 border-2 border-white rounded-full"
-                  ></span>
-                </div>
-              </router-link>
-              <router-link
-                v-else-if="currentRoute"
-                to="/"
-                class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                >Home
-              </router-link>
+              <div class="relative inline-block">
+                <img
+                  class="inline-block object-cover w-10 h-10 rounded-full"
+                  :src="image"
+                  alt=""
+                />
+                <span
+                  v-if="image"
+                  class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-green-600 border-2 border-white rounded-full"
+                ></span>
+                <span
+                  v-else
+                  class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-red-600 border-2 border-white rounded-full"
+                ></span>
+              </div>
+
               <button
                 class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                 @click="Logout"
@@ -79,9 +70,9 @@ export default {
       fetchUser();
     });
     // Dynamic route
-    if (route.path !== "/about") {
-      state.currentRoute = false;
-    }
+    // if (route.path !== "/about") {
+    //   state.currentRoute = false;
+    // }
 
     function Logout() {
       firebase.auth().signOut();
