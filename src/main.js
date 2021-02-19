@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { createApp, reactive, onUnmounted, toRefs } from 'vue'
 import App from './App.vue'
 import router from './router'
 import './assets/tailwind.css'
@@ -14,5 +14,42 @@ const firebaseConfig = {
     appId: process.env.VUE_APP_APP_ID
 };
 firebase.initializeApp(firebaseConfig)
+
+// firestore
+const db = firebase.firestore()
+const userCollection = db.collection('userData')
+
+// Add new user data
+export const createUser = user => {
+    return userCollection.add(user)
+}
+
+// get data
+export const getUser = async id => {
+    const user = await userCollection.doc(id).get()
+    return user.exists ? user.data() : null 
+}
+
+// update data
+export const updateUser = (id, user) => {
+    return userCollection.doc(id).update(user)
+}
+
+// delete data
+export const deleteUser = id => {
+    return userCollection.doc(id).delete()
+}
+
+// return data from db
+export const useLoadUsers = () => {
+    const state = reactive({
+        users : []
+    })
+    const close = userCollection.onSnapshot(snapshot => {
+        state.users = snapshot.docs.map(doc => ({id : doc.id, ...doc.data()}))
+    })
+    onUnmounted(close)
+    return {...toRefs(state)}
+}
 
 createApp(App).use(router).mount('#app')
