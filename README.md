@@ -31,8 +31,8 @@ Idea : [Dev Challenge Auth App](https://devchallenges.io/challenges/N1fvBjQfhlkc
 
 User(s) can login and or register a new account ✔   
 : can log in or register with at least one of the following services: Google, Github ✔   
-: can see my profile details ❌   
-: can edit my details including: photo, name, bio, phone, email and password ❌   
+: can see my profile details ✔     
+: can edit my details including:  name, bio, phone ✔  photo ...coming soon   
 : can upload a new photo or provide an image URL ❌   
 
 
@@ -42,6 +42,7 @@ The following tools were used in this project:
 
 - [Vue3](https://v3.vuejs.org/)
 - [Firebase](https://firebase.google.com/)
+- [Cloud Firestore](https://firebase.google.com/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [Vue Router](https://router.vuejs.org/)
 
