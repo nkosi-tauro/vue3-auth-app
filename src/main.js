@@ -40,16 +40,6 @@ export const deleteUser = id => {
     return userCollection.doc(id).delete()
 }
 
-// return data from db
-export const useLoadUsers = () => {
-    const state = reactive({
-        users : []
-    })
-    const close = userCollection.onSnapshot(snapshot => {
-        state.users = snapshot.docs.map(doc => ({id : doc.id, ...doc.data()}))
-    })
-    onUnmounted(close)
-    return {...toRefs(state)}
-}
+
 
 createApp(App).use(router).mount('#app')

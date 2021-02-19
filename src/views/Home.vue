@@ -130,6 +130,8 @@
       </div>
       </form>
     </div>
+
+    <AccInfo/>
   </div>
 </template>
 
@@ -138,11 +140,13 @@ import Header from "../components/Header.vue";
 import { onBeforeMount, reactive, toRefs } from "vue";
 import firebaseUser from "../store/user.js";
 import {createUser} from '../main.js'
+import AccInfo from '../components/AccInfo.vue'
 
 export default {
   name: "Home",
   components: {
     Header,
+    AccInfo
   },
   setup() {
     const state = reactive({
