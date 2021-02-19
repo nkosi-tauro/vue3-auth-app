@@ -28,6 +28,11 @@
                 <th
                   class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
                 >
+                  Email
+                </th>
+                <th
+                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                >
                   Action
                 </th>
               </tr>
@@ -48,7 +53,7 @@
                     </div>
                     <div class="ml-3">
                       <p class="text-gray-900 whitespace-no-wrap">
-                        {{ fname }} {{ lname }}
+                        {{ fname }} {{ lname }} 
                       </p>
                     </div>
                   </div>
@@ -58,6 +63,9 @@
                 </td>
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <p class="text-gray-900 whitespace-no-wrap">{{ bio }}</p>
+                </td>
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <p class="text-gray-900 whitespace-no-wrap">{{ name }}</p>
                 </td>
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <router-link :to="`/edit/${id}`"
@@ -99,6 +107,7 @@ import firebase from "firebase";
 export default {
   name: "Account Info",
   setup(props) {
+    const { name, image } = firebaseUser();
     const db = firebase.firestore();
     const userCollection = db.collection("userData");
     const state = reactive({
@@ -108,11 +117,8 @@ export default {
       state.users = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
     });
     onUnmounted(close);
-    // return { ...toRefs(state) };
-    console.log(state.users);
 
-    const { image } = firebaseUser();
-    return { image, ...toRefs(state), deleteUser };
+    return { image, name, ...toRefs(state), deleteUser };
   },
 };
 </script>

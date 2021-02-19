@@ -109,7 +109,7 @@ export default {
       firebase
         .auth()
         .createUserWithEmailAndPassword(state.email, state.password)
-        .then((user) => console.log(state.fname))
+        .then((user) => console.log("success"))
         .catch((err) => alert(err.message));
       
     }

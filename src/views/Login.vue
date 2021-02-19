@@ -112,7 +112,7 @@ export default {
       firebase
         .auth()
         .signInWithEmailAndPassword(state.email, state.password)
-        .then((data) => console.log(data))
+        .then((data) => console.log("Success"))
         .catch((err) => alert(err.message));
     }
 
